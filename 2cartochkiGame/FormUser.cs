@@ -12,10 +12,16 @@ namespace _2cartochkiGame
 {
     public partial class FormUser : Form
     {
+        
         public FormUser()
         {
             InitializeComponent();
         }
 
+        private void buttonEnterName_Click(object sender, EventArgs e)
+        {
+            Player player = new Player(textBoxEnterName.Text, FormGame.cntSteps, itogTime);
+            this.Close();
+        }
     }
 }

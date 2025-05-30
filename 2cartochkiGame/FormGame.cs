@@ -8,11 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Timers;
 
 namespace _2cartochkiGame
 {
     public partial class FormGame : Form
     {
+
+        int[,] mass = new int[4, 4]; // Массив для значенией, чтоб потом по значению присвоить карточку в датагрид
+        Random rnd = new Random();
+        Image Def;
+        int firstIndex1 = -1;
+        int secondIndex1 = -1;
+        int firstIndex2, secondIndex2, cnt, flag = 0;
+        public static int cntSteps = 0;
+        int cntEnd = 30;
+
+
         private void ShowItem(int[,] znach, int row, int col) //ОТРИСОВКА НА ЭКРАНЕ ВЫБРАННОЙ КАРТОЧКИ
         {
             int num = znach[row, col];
@@ -72,13 +84,7 @@ namespace _2cartochkiGame
                 completionMass(mass, level2_words);
             }
         }
-        int[,] mass = new int[4, 4]; // Массив для значенией, чтоб потом по значению присвоить карточку в датагрид
-        Random rnd = new Random();
-        Image Def;
-        int firstIndex1 = -1;
-        int secondIndex1 = -1;
-        int firstIndex2, secondIndex2, cnt, cntSteps, flag = 0;
-        int cntEnd = 30;
+        
         private void buttonLevel2_Click(object sender, EventArgs e)// 2 УРОВЕНЬ
         {
             flag = 1;
@@ -103,6 +109,8 @@ namespace _2cartochkiGame
             dataGridView1.Rows.Add(4);
             ShowDefolt();
             resetFull();
+            FormUser enterName = new FormUser();
+            enterName.Show();
         }
         private async void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -158,7 +166,6 @@ namespace _2cartochkiGame
                         }
                         else
                         {
-                            //Application.Exit();
                             this.Close();
                         }
                     }
