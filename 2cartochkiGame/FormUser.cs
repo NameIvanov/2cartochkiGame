@@ -20,7 +20,7 @@ namespace _2cartochkiGame
 
         private void buttonEnterName_Click(object sender, EventArgs e)
         {
-            Player player = new Player(textBoxEnterName.Text, FormGame.cntSteps, itogTime);
+            Player player = new Player(textBoxEnterName.Text);
             this.Close();
         }
     }

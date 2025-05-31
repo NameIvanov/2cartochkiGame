@@ -23,6 +23,7 @@ namespace _2cartochkiGame
         int firstIndex2, secondIndex2, cnt, flag = 0;
         public static int cntSteps = 0;
         int cntEnd = 30;
+        Time time = new Time();
 
 
         private void ShowItem(int[,] znach, int row, int col) //ОТРИСОВКА НА ЭКРАНЕ ВЫБРАННОЙ КАРТОЧКИ
@@ -106,9 +107,15 @@ namespace _2cartochkiGame
         }
         private void FormGame_Load(object sender, EventArgs e)
         {
+            
+            time.Start();
+
             dataGridView1.Rows.Add(4);
+
             ShowDefolt();
+
             resetFull();
+
             FormUser enterName = new FormUser();
             enterName.Show();
         }
@@ -154,11 +161,20 @@ namespace _2cartochkiGame
                         DialogResult result;
                         if(cnt==8)
                         {
-                             result = MessageBox.Show("Поздравляем c победой,хотите сыграть еще?", "ПОБЕДА!", MessageBoxButtons.YesNo);
+                            result = MessageBox.Show("Поздравляем c победой,хотите сыграть еще?", "ПОБЕДА!", MessageBoxButtons.YesNo);
+                            time.Stop();
+                            Player.ItogTime = Time.itogTime;
+                            Player.AddPlayer();
+                            Player.ItogSteps = cntSteps;
+
                         }
                         else
                         {
                              result = MessageBox.Show("К сожалению вы проиграли,хотите попробовать заново?", "Проигрышь!", MessageBoxButtons.YesNo);
+                            time.Stop();
+                            Player.ItogTime = Time.itogTime;
+                            Player.AddPlayer();
+                            Player.ItogSteps = cntSteps;
                         }
                         if (result == DialogResult.Yes)
                         {
