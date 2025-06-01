@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Timers;
+using System.IO;
 
 namespace _2cartochkiGame
 {
@@ -24,6 +25,7 @@ namespace _2cartochkiGame
         public static int cntSteps = 0;
         int cntEnd = 30;
         Time time = new Time();
+        FormUser enterName = new FormUser();
 
 
         private void ShowItem(int[,] znach, int row, int col) //ОТРИСОВКА НА ЭКРАНЕ ВЫБРАННОЙ КАРТОЧКИ
@@ -99,24 +101,40 @@ namespace _2cartochkiGame
         private void buttonRestart_Click(object sender, EventArgs e) // НАЧАТЬ ЗАНОВО
         {
             resetFull();
+            enterName.Show();
+            time.Start();
+            Player.sortResults();
+            WriteResults();
         }
         public FormGame()
         {
             InitializeComponent();
             Def = Bitmap.FromFile("images/standart.png");
         }
+        public void WriteResults()
+        {
+            listBoxRecords.Items.Clear();
+            using(StreamReader writer = new StreamReader("UsersResults/usersResults.txt"))
+            {
+                while (!writer.EndOfStream)
+                {
+                    listBoxRecords.Items.Add(writer.ReadLine());
+                }
+            }
+        }
         private void FormGame_Load(object sender, EventArgs e)
         {
-            
-            time.Start();
-
             dataGridView1.Rows.Add(4);
+
+            time.Start(); 
+
+            Player.sortResults();
+            WriteResults();
 
             ShowDefolt();
 
             resetFull();
 
-            FormUser enterName = new FormUser();
             enterName.Show();
         }
         private async void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -164,17 +182,20 @@ namespace _2cartochkiGame
                             result = MessageBox.Show("Поздравляем c победой,хотите сыграть еще?", "ПОБЕДА!", MessageBoxButtons.YesNo);
                             time.Stop();
                             Player.ItogTime = Time.itogTime;
-                            Player.AddPlayer();
                             Player.ItogSteps = cntSteps;
-
+                            Player.AddPlayer();
+                            Player.sortResults();
+                            WriteResults();
                         }
                         else
                         {
-                             result = MessageBox.Show("К сожалению вы проиграли,хотите попробовать заново?", "Проигрышь!", MessageBoxButtons.YesNo);
+                            result = MessageBox.Show("К сожалению вы проиграли,хотите попробовать заново?", "Проигрышь!", MessageBoxButtons.YesNo);
                             time.Stop();
                             Player.ItogTime = Time.itogTime;
-                            Player.AddPlayer();
                             Player.ItogSteps = cntSteps;
+                            Player.AddPlayer();
+                            Player.sortResults();
+                            WriteResults();
                         }
                         if (result == DialogResult.Yes)
                         {

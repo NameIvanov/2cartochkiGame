@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Threading;
+using System.Timers;
 
 namespace _2cartochkiGame
 {
@@ -18,9 +24,45 @@ namespace _2cartochkiGame
         }
         static public void AddPlayer()
         {
-            StreamWriter sw = new StreamWriter("UsersResults/usersResults.txt");
-            sw.WriteLine($"Имя: {Name} Количество шагов: {ItogSteps} Время прохождения: {ItogTime}");
-            sw.Close();
+            using (StreamWriter writer = new StreamWriter("UsersResults/usersResults.txt", true))
+            {
+                writer.WriteLine($"Имя: {Name} Количество шагов: {ItogSteps} Время прохождения: {ItogTime}");
+                writer.Close();
+            }
+        }
+        public static void sortResults()
+        {
+            List<string> users = new List<string>();
+            using(StreamReader reader = new StreamReader("UsersResults/usersResults.txt"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var stroka = reader.ReadLine();
+                    users.Add(stroka);
+                }
+            }
+            for (int i = 0; i < users.Count; i++)
+            {
+                for (int j = 1; j < users.Count; j++)
+                {
+                    var a1 = users[j - 1].Split();
+                    var a2 = users[j].Split();
+                    if (Convert.ToInt32(a1[4]) > Convert.ToInt32(a2[4]) || (Convert.ToInt32(a1[4]) == Convert.ToInt32(a2[4]) && Convert.ToInt32(a1[7]) > Convert.ToInt32(a2[7])))
+                    {
+                        string smena = users[j - 1];
+                        users[j - 1] = users[j];
+                        users[j] = smena;
+                    }
+                }
+            }
+            using (StreamWriter writer = new StreamWriter("UsersResults/usersResults.txt", false))
+            {
+                for (int i = 0; i < users.Count; i++)
+                {
+                    writer.WriteLine(users[i]);
+                }
+                writer.Close();
+            }
         }
     }
 }

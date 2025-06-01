@@ -14,6 +14,7 @@ namespace _2cartochkiGame
         public void Start()
         {
             timer.Interval = 1000;
+            timer.Elapsed += OnTimedEvent;
             itogTime = 0;
             timer.Start();
         }

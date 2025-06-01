@@ -41,6 +41,7 @@ namespace _2cartochkiGame
             this.textBoxCountSteps = new System.Windows.Forms.TextBox();
             this.textBoxPerfect = new System.Windows.Forms.TextBox();
             this.timerSleep = new System.Windows.Forms.Timer(this.components);
+            this.listBoxRecords = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,7 +112,7 @@ namespace _2cartochkiGame
             this.buttonRestart.BackColor = System.Drawing.Color.Tomato;
             this.buttonRestart.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRestart.ForeColor = System.Drawing.Color.Black;
-            this.buttonRestart.Location = new System.Drawing.Point(572, 536);
+            this.buttonRestart.Location = new System.Drawing.Point(525, 539);
             this.buttonRestart.Name = "buttonRestart";
             this.buttonRestart.Size = new System.Drawing.Size(139, 31);
             this.buttonRestart.TabIndex = 2;
@@ -123,7 +124,7 @@ namespace _2cartochkiGame
             // 
             this.buttonLevel1.BackColor = System.Drawing.Color.Tomato;
             this.buttonLevel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLevel1.Location = new System.Drawing.Point(560, 52);
+            this.buttonLevel1.Location = new System.Drawing.Point(525, 50);
             this.buttonLevel1.Name = "buttonLevel1";
             this.buttonLevel1.Size = new System.Drawing.Size(170, 50);
             this.buttonLevel1.TabIndex = 3;
@@ -136,7 +137,7 @@ namespace _2cartochkiGame
             this.buttonLevel2.BackColor = System.Drawing.Color.Tomato;
             this.buttonLevel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLevel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonLevel2.Location = new System.Drawing.Point(560, 127);
+            this.buttonLevel2.Location = new System.Drawing.Point(525, 118);
             this.buttonLevel2.Name = "buttonLevel2";
             this.buttonLevel2.Size = new System.Drawing.Size(170, 50);
             this.buttonLevel2.TabIndex = 4;
@@ -170,12 +171,21 @@ namespace _2cartochkiGame
             // 
             this.timerSleep.Interval = 700;
             // 
+            // listBoxRecords
+            // 
+            this.listBoxRecords.FormattingEnabled = true;
+            this.listBoxRecords.Location = new System.Drawing.Point(525, 174);
+            this.listBoxRecords.Name = "listBoxRecords";
+            this.listBoxRecords.Size = new System.Drawing.Size(420, 329);
+            this.listBoxRecords.TabIndex = 6;
+            // 
             // FormGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(786, 581);
+            this.ClientSize = new System.Drawing.Size(957, 591);
+            this.Controls.Add(this.listBoxRecords);
             this.Controls.Add(this.textBoxPerfect);
             this.Controls.Add(this.buttonLevel2);
             this.Controls.Add(this.buttonLevel1);
@@ -207,6 +217,7 @@ namespace _2cartochkiGame
         private System.Windows.Forms.DataGridViewImageColumn Column2;
         private System.Windows.Forms.DataGridViewImageColumn Column3;
         private System.Windows.Forms.DataGridViewImageColumn Column4;
+        public System.Windows.Forms.ListBox listBoxRecords;
     }
 }
 
