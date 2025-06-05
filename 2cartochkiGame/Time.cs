@@ -10,12 +10,12 @@ namespace _2cartochkiGame
     internal class Time
     {
         Timer timer = new Timer();
-        static public int itogTime { get; set; }
+        static public int СalculatedTime { get; set; }
         public void Start()
         {
             timer.Interval = 1000;
             timer.Elapsed += OnTimedEvent;
-            itogTime = 0;
+            СalculatedTime = 0;
             timer.Start();
         }
         public void Stop()
@@ -24,7 +24,7 @@ namespace _2cartochkiGame
         }
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
-            itogTime++;
+            СalculatedTime++;
         }
 
     }

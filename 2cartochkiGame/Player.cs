@@ -16,21 +16,21 @@ namespace _2cartochkiGame
     internal class Player
     {
         static public string Name { get; set; }
-        static public int ItogSteps { get; set; }
-        static public int ItogTime { get; set; }
+        static public int ResultSteps { get; set; }
+        static public int ResultTime { get; set; }
         public Player(string name)
         {
             Name = name;
         }
-        static public void AddPlayer()
+        static public void WritePlayer()
         {
             using (StreamWriter writer = new StreamWriter("UsersResults/usersResults.txt", true))
             {
-                writer.WriteLine($"Имя: {Name} Количество шагов: {ItogSteps} Время прохождения: {ItogTime}");
+                writer.WriteLine($"Имя: {Name} Количество шагов: {ResultSteps} Время прохождения: {ResultTime}");
                 writer.Close();
             }
         }
-        public static void sortResults()
+        public static void SortResults()
         {
             List<string> users = new List<string>();
             using(StreamReader reader = new StreamReader("UsersResults/usersResults.txt"))

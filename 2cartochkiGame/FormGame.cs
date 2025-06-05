@@ -103,7 +103,7 @@ namespace _2cartochkiGame
             resetFull();
             enterName.Show();
             time.Start();
-            Player.sortResults();
+            Player.SortResults();
             WriteResults();
         }
         public FormGame()
@@ -128,7 +128,7 @@ namespace _2cartochkiGame
 
             time.Start(); 
 
-            Player.sortResults();
+            Player.SortResults();
             WriteResults();
 
             ShowDefolt();
@@ -181,20 +181,20 @@ namespace _2cartochkiGame
                         {
                             result = MessageBox.Show("Поздравляем c победой,хотите сыграть еще?", "ПОБЕДА!", MessageBoxButtons.YesNo);
                             time.Stop();
-                            Player.ItogTime = Time.itogTime;
-                            Player.ItogSteps = cntSteps;
-                            Player.AddPlayer();
-                            Player.sortResults();
+                            Player.ResultTime = Time.СalculatedTime;
+                            Player.ResultSteps = cntSteps;
+                            Player.WritePlayer();
+                            Player.SortResults();
                             WriteResults();
                         }
                         else
                         {
                             result = MessageBox.Show("К сожалению вы проиграли,хотите попробовать заново?", "Проигрышь!", MessageBoxButtons.YesNo);
                             time.Stop();
-                            Player.ItogTime = Time.itogTime;
-                            Player.ItogSteps = cntSteps;
-                            Player.AddPlayer();
-                            Player.sortResults();
+                            Player.ResultTime = Time.СalculatedTime;
+                            Player.ResultSteps = cntSteps;
+                            Player.WritePlayer();
+                            Player.SortResults();
                             WriteResults();
                         }
                         if (result == DialogResult.Yes)
