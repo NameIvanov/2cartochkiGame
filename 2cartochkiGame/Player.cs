@@ -22,7 +22,7 @@ namespace _2cartochkiGame
         {
             Name = name;
         }
-        static public void WritePlayer()
+        static public void WriteToFile()
         {
             using (StreamWriter writer = new StreamWriter("UsersResults/usersResults.txt", true))
             {
@@ -30,7 +30,7 @@ namespace _2cartochkiGame
                 writer.Close();
             }
         }
-        public static void SortResults()
+        public static void SortFile()
         {
             List<string> users = new List<string>();
             using(StreamReader reader = new StreamReader("UsersResults/usersResults.txt"))

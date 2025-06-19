@@ -101,9 +101,9 @@ namespace _2cartochkiGame
         private void buttonRestart_Click(object sender, EventArgs e) // НАЧАТЬ ЗАНОВО
         {
             resetFull();
-            enterName.Show();
+            //enterName.Show();
             time.Start();
-            Player.SortResults();
+            Player.SortFile();
             WriteResults();
         }
         public FormGame()
@@ -128,7 +128,7 @@ namespace _2cartochkiGame
 
             time.Start(); 
 
-            Player.SortResults();
+            Player.SortFile();
             WriteResults();
 
             ShowDefolt();
@@ -183,8 +183,8 @@ namespace _2cartochkiGame
                             time.Stop();
                             Player.ResultTime = Time.СalculatedTime;
                             Player.ResultSteps = cntSteps;
-                            Player.WritePlayer();
-                            Player.SortResults();
+                            Player.WriteToFile();
+                            Player.SortFile();
                             WriteResults();
                         }
                         else
@@ -193,8 +193,8 @@ namespace _2cartochkiGame
                             time.Stop();
                             Player.ResultTime = Time.СalculatedTime;
                             Player.ResultSteps = cntSteps;
-                            Player.WritePlayer();
-                            Player.SortResults();
+                            Player.WriteToFile();
+                            Player.SortFile();
                             WriteResults();
                         }
                         if (result == DialogResult.Yes)
