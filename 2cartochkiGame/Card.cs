@@ -16,17 +16,14 @@ namespace _2cartochkiGame
 {
     internal class Card
     {
-        public Image DefoltImage = Image.FromFile("images/defolt.png");
+        public Image DefoltImage = Image.FromFile("images/standart.png");
         private readonly DataGridView DataGrid;
         public Image image { get; set; }
         public static int Row { get; set; }
         public static int Col { get; set; }
-        public int[,] Mass { get;}
-        public Card(int[,] mass, int row, int col, DataGridView datagrid)
+        public static int[,] Mass { get; set; }
+        public Card(DataGridView datagrid)
         {
-            Row = row;  
-            Col = col;  
-            Mass = mass;
             DataGrid = datagrid;
         }
         public void ShowSelectedCard() // Показ карточки
@@ -45,7 +42,7 @@ namespace _2cartochkiGame
                 DataGrid.Rows[Row].Cells[Col].Value = image;
             }
         }
-        public void ShowDefoltCard() //ВЫВОД НАЧАЛЬНОГО ЭКРАНА КАРТОЧЕК
+        public void ShowDefoltCards() //ВЫВОД НАЧАЛЬНОГО ЭКРАНА КАРТОЧЕК
         {
             for (int i = 0; i < 4; i++)
             {
@@ -54,6 +51,11 @@ namespace _2cartochkiGame
                     DataGrid.Rows[i].Cells[j].Value = DefoltImage;
                 }
             }
+        }
+        public void ShowSelectedDefoltCards(int Row1,int Col1,int Row2,int Col2) //ВЫВОД ДЕВОЛТЬНОЙ КАРТОЧКИ НА ДВЕ НЕПРАВИЛЬНО ВЫБРАННЫЕ
+        {
+            DataGrid.Rows[Row1].Cells[Col1].Value = DefoltImage;
+            DataGrid.Rows[Row2].Cells[Col2].Value = DefoltImage;
         }
     }
 }

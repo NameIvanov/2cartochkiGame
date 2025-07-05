@@ -26,6 +26,7 @@ namespace _2cartochkiGame
         int cntEnd = 30;
         Time time = new Time();
         FormUser enterName = new FormUser();
+        Card card;
 
 
         private void ShowItem(int[,] znach, int row, int col) //ОТРИСОВКА НА ЭКРАНЕ ВЫБРАННОЙ КАРТОЧКИ
@@ -75,16 +76,19 @@ namespace _2cartochkiGame
             secondIndex1 = -1;
             textBoxCountSteps.Text = $"Кол-во сделанных шагов:{cntSteps}";
             textBoxPerfect.Text = $"Кол-во допустимых шагов: {cntEnd}";
-            ShowDefolt();
+            //ShowDefolt();
+            card.ShowDefoltCards();
             if (flag == 0)
             {
                 List<int> level1_words = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, -1, -2, -3, -4, -5, -6, -7, -8 };
                 completionMass(mass, level1_words);
+                Card.Mass = mass;
             }
             else
             {
                 List<int> level2_words = new List<int> { 9, 10, 11, 12, 13, 14, 15, 16, -9, -10, -11, -12, -13, -14, -15, -16 };
                 completionMass(mass, level2_words);
+                Card.Mass = mass;
             }
         }
         
@@ -109,6 +113,7 @@ namespace _2cartochkiGame
         {
             InitializeComponent();
             Def = Bitmap.FromFile("images/standart.png");
+            card = new Card(dataGridView1);
         }
         public void WriteResults()
         {
@@ -138,7 +143,7 @@ namespace _2cartochkiGame
         }
         private async void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != Def)
+            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != card.DefoltImage)
             {
                 MessageBox.Show("Выберите другую карту!");
             }
@@ -148,20 +153,27 @@ namespace _2cartochkiGame
                 {
                     firstIndex1 = e.RowIndex;
                     secondIndex1 = e.ColumnIndex;
-                    ShowItem(mass, firstIndex1, secondIndex1);
+                    Card.Row = e.RowIndex;
+                    Card.Col = e.ColumnIndex;
+                    //ShowItem(mass, firstIndex1, secondIndex1);
+                    card.ShowSelectedCard();
                 }
                 else
                 {
                     firstIndex2 = e.RowIndex;
                     secondIndex2 = e.ColumnIndex;
-                    ShowItem(mass, firstIndex2, secondIndex2);
+                    //ShowItem(mass, firstIndex2, secondIndex2);
+                    Card.Row = e.RowIndex;
+                    Card.Col = e.ColumnIndex;
+                    card.ShowSelectedCard();
                     if (Math.Abs(mass[firstIndex1, secondIndex1]) != Math.Abs(mass[firstIndex2, secondIndex2]))
                     {                      
                         this.Enabled = false;
                         await Task.Delay(700);
                         this.Enabled = true;
-                        dataGridView1.Rows[firstIndex1].Cells[secondIndex1].Value = Def;
-                        dataGridView1.Rows[firstIndex2].Cells[secondIndex2].Value = Def;
+                        //dataGridView1.Rows[firstIndex1].Cells[secondIndex1].Value = Def;
+                        //dataGridView1.Rows[firstIndex2].Cells[secondIndex2].Value = Def;
+                        card.ShowSelectedDefoltCards(firstIndex1, secondIndex1, firstIndex2, secondIndex2);
                     }
                     else
                     {
