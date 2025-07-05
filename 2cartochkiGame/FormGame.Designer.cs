@@ -205,8 +205,6 @@ namespace _2cartochkiGame
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonRestart;
         private System.Windows.Forms.Button buttonLevel1;
         private System.Windows.Forms.Button buttonLevel2;
@@ -218,6 +216,7 @@ namespace _2cartochkiGame
         private System.Windows.Forms.DataGridViewImageColumn Column3;
         private System.Windows.Forms.DataGridViewImageColumn Column4;
         public System.Windows.Forms.ListBox listBoxRecords;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

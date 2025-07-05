@@ -101,7 +101,6 @@ namespace _2cartochkiGame
         private void buttonRestart_Click(object sender, EventArgs e) // НАЧАТЬ ЗАНОВО
         {
             resetFull();
-            //enterName.Show();
             time.Start();
             Player.SortFile();
             WriteResults();

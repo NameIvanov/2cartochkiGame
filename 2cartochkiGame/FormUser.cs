@@ -11,8 +11,7 @@ using System.Windows.Forms;
 namespace _2cartochkiGame
 {
     public partial class FormUser : Form
-    {
-        
+    {  
         public FormUser()
         {
             InitializeComponent();
