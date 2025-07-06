@@ -52,7 +52,7 @@ namespace _2cartochkiGame
                 }
             }
         }
-        public void ShowSelectedDefoltCards(int Row1,int Col1,int Row2,int Col2) //ВЫВОД ДЕВОЛТЬНОЙ КАРТОЧКИ НА ДВЕ НЕПРАВИЛЬНО ВЫБРАННЫЕ
+        public void ShowSelectedDefoltCards(int Row1,int Col1,int Row2,int Col2) //ВЫВОД ДЕВОЛТНОЙ КАРТОЧКИ НА ДВЕ НЕПРАВИЛЬНО ВЫБРАННЫЕ
         {
             DataGrid.Rows[Row1].Cells[Col1].Value = DefoltImage;
             DataGrid.Rows[Row2].Cells[Col2].Value = DefoltImage;

@@ -29,32 +29,32 @@ namespace _2cartochkiGame
         Card card;
 
 
-        private void ShowItem(int[,] znach, int row, int col) //ОТРИСОВКА НА ЭКРАНЕ ВЫБРАННОЙ КАРТОЧКИ
-        {
-            int num = znach[row, col];
-            if(num<0)
-            {
-                string ph = $"images/photo_{Convert.ToString((num)).Substring(1)}.png";
-                Image image = Image.FromFile(ph);
-                dataGridView1.Rows[row].Cells[col].Value = image;
-            }
-            else
-            {
-                string ph = $"images/photo{Convert.ToString((num))}.jpg";
-                Image image = Image.FromFile(ph);
-                dataGridView1.Rows[row].Cells[col].Value = image;
-            }
-        }
-        private void ShowDefolt() //ВЫВОД НАЧАЛЬНОГО ЭКРАНА КАРТОЧЕК
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    dataGridView1.Rows[i].Cells[j].Value = Def;
-                }
-            }
-        }
+        //private void ShowItem(int[,] znach, int row, int col) //ОТРИСОВКА НА ЭКРАНЕ ВЫБРАННОЙ КАРТОЧКИ
+        //{
+        //    int num = znach[row, col];
+        //    if(num<0)
+        //    {
+        //        string ph = $"images/photo_{Convert.ToString((num)).Substring(1)}.png";
+        //        Image image = Image.FromFile(ph);
+        //        dataGridView1.Rows[row].Cells[col].Value = image;
+        //    }
+        //    else
+        //    {
+        //        string ph = $"images/photo{Convert.ToString((num))}.jpg";
+        //        Image image = Image.FromFile(ph);
+        //        dataGridView1.Rows[row].Cells[col].Value = image;
+        //    }
+        //}
+        //private void ShowDefolt() //ВЫВОД НАЧАЛЬНОГО ЭКРАНА КАРТОЧЕК
+        //{
+        //    for (int i = 0; i < 4; i++)
+        //    {
+        //        for (int j = 0; j < 4; j++)
+        //        {
+        //            dataGridView1.Rows[i].Cells[j].Value = Def;
+        //        }
+        //    }
+        //}
         private void completionMass(int[,] mass,List<int> words1)// ПЕРЕМЕШИВАНИЕ "ФОТОГРАФИЙ" ПО МАССИВУ
         {
             for (int i = 0; i < 4; i++)
@@ -135,8 +135,8 @@ namespace _2cartochkiGame
             Player.SortFile();
             WriteResults();
 
-            ShowDefolt();
-
+            //ShowDefolt();
+            card.ShowDefoltCards();
             resetFull();
 
             enterName.Show();
