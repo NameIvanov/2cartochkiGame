@@ -26,35 +26,9 @@ namespace _2cartochkiGame
         int cntEnd = 30;
         Time time = new Time();
         FormUser enterName = new FormUser();
+        FormWordOsetian osetCards = new FormWordOsetian();
         Card card;
 
-
-        //private void ShowItem(int[,] znach, int row, int col) //ОТРИСОВКА НА ЭКРАНЕ ВЫБРАННОЙ КАРТОЧКИ
-        //{
-        //    int num = znach[row, col];
-        //    if(num<0)
-        //    {
-        //        string ph = $"images/photo_{Convert.ToString((num)).Substring(1)}.png";
-        //        Image image = Image.FromFile(ph);
-        //        dataGridView1.Rows[row].Cells[col].Value = image;
-        //    }
-        //    else
-        //    {
-        //        string ph = $"images/photo{Convert.ToString((num))}.jpg";
-        //        Image image = Image.FromFile(ph);
-        //        dataGridView1.Rows[row].Cells[col].Value = image;
-        //    }
-        //}
-        //private void ShowDefolt() //ВЫВОД НАЧАЛЬНОГО ЭКРАНА КАРТОЧЕК
-        //{
-        //    for (int i = 0; i < 4; i++)
-        //    {
-        //        for (int j = 0; j < 4; j++)
-        //        {
-        //            dataGridView1.Rows[i].Cells[j].Value = Def;
-        //        }
-        //    }
-        //}
         private void completionMass(int[,] mass,List<int> words1)// ПЕРЕМЕШИВАНИЕ "ФОТОГРАФИЙ" ПО МАССИВУ
         {
             for (int i = 0; i < 4; i++)
@@ -78,6 +52,8 @@ namespace _2cartochkiGame
             textBoxPerfect.Text = $"Кол-во допустимых шагов: {cntEnd}";
             //ShowDefolt();
             card.ShowDefoltCards();
+            Card.File = "images";
+            Card.Format = 1;
             if (flag == 0)
             {
                 List<int> level1_words = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, -1, -2, -3, -4, -5, -6, -7, -8 };
@@ -115,6 +91,26 @@ namespace _2cartochkiGame
             Def = Bitmap.FromFile("images/standart.png");
             card = new Card(dataGridView1);
         }
+
+        private void buttonRegistration_Click(object sender, EventArgs e)
+        {
+            enterName.Show();
+        }
+
+        private void buttonAddWordsCards_Click(object sender, EventArgs e)
+        {
+            osetCards.Show();
+        }
+
+        private void buttonStartUserCards_Click(object sender, EventArgs e)
+        {
+            flag = 0;
+            resetFull();
+            Card.File = "UserCards";
+            Card.Format = 0;
+
+        }
+
         public void WriteResults()
         {
             listBoxRecords.Items.Clear();
@@ -135,11 +131,9 @@ namespace _2cartochkiGame
             Player.SortFile();
             WriteResults();
 
-            //ShowDefolt();
             card.ShowDefoltCards();
-            resetFull();
 
-            enterName.Show();
+            resetFull();
         }
         private async void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

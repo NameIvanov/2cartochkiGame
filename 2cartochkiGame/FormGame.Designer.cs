@@ -42,6 +42,9 @@ namespace _2cartochkiGame
             this.textBoxPerfect = new System.Windows.Forms.TextBox();
             this.timerSleep = new System.Windows.Forms.Timer(this.components);
             this.listBoxRecords = new System.Windows.Forms.ListBox();
+            this.buttonRegistration = new System.Windows.Forms.Button();
+            this.buttonAddWordsCards = new System.Windows.Forms.Button();
+            this.buttonStartUserCards = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -179,12 +182,51 @@ namespace _2cartochkiGame
             this.listBoxRecords.Size = new System.Drawing.Size(420, 329);
             this.listBoxRecords.TabIndex = 6;
             // 
+            // buttonRegistration
+            // 
+            this.buttonRegistration.BackColor = System.Drawing.Color.SandyBrown;
+            this.buttonRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRegistration.Location = new System.Drawing.Point(833, 12);
+            this.buttonRegistration.Name = "buttonRegistration";
+            this.buttonRegistration.Size = new System.Drawing.Size(92, 48);
+            this.buttonRegistration.TabIndex = 7;
+            this.buttonRegistration.Text = "Регистрация";
+            this.buttonRegistration.UseVisualStyleBackColor = false;
+            this.buttonRegistration.Click += new System.EventHandler(this.buttonRegistration_Click);
+            // 
+            // buttonAddWordsCards
+            // 
+            this.buttonAddWordsCards.BackColor = System.Drawing.Color.SandyBrown;
+            this.buttonAddWordsCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonAddWordsCards.Location = new System.Drawing.Point(833, 66);
+            this.buttonAddWordsCards.Name = "buttonAddWordsCards";
+            this.buttonAddWordsCards.Size = new System.Drawing.Size(92, 50);
+            this.buttonAddWordsCards.TabIndex = 8;
+            this.buttonAddWordsCards.Text = "Добавить слова";
+            this.buttonAddWordsCards.UseVisualStyleBackColor = false;
+            this.buttonAddWordsCards.Click += new System.EventHandler(this.buttonAddWordsCards_Click);
+            // 
+            // buttonStartUserCards
+            // 
+            this.buttonStartUserCards.BackColor = System.Drawing.Color.SandyBrown;
+            this.buttonStartUserCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonStartUserCards.Location = new System.Drawing.Point(833, 122);
+            this.buttonStartUserCards.Name = "buttonStartUserCards";
+            this.buttonStartUserCards.Size = new System.Drawing.Size(92, 50);
+            this.buttonStartUserCards.TabIndex = 9;
+            this.buttonStartUserCards.Text = "Уровень из ваших карточек";
+            this.buttonStartUserCards.UseVisualStyleBackColor = false;
+            this.buttonStartUserCards.Click += new System.EventHandler(this.buttonStartUserCards_Click);
+            // 
             // FormGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(957, 591);
+            this.Controls.Add(this.buttonStartUserCards);
+            this.Controls.Add(this.buttonAddWordsCards);
+            this.Controls.Add(this.buttonRegistration);
             this.Controls.Add(this.listBoxRecords);
             this.Controls.Add(this.textBoxPerfect);
             this.Controls.Add(this.buttonLevel2);
@@ -192,7 +234,7 @@ namespace _2cartochkiGame
             this.Controls.Add(this.buttonRestart);
             this.Controls.Add(this.textBoxCountSteps);
             this.Controls.Add(this.dataGridView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormGame";
             this.Text = "Игра Парные Карточки";
             this.TopMost = true;
@@ -217,6 +259,9 @@ namespace _2cartochkiGame
         private System.Windows.Forms.DataGridViewImageColumn Column4;
         public System.Windows.Forms.ListBox listBoxRecords;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button buttonRegistration;
+        private System.Windows.Forms.Button buttonAddWordsCards;
+        private System.Windows.Forms.Button buttonStartUserCards;
     }
 }
 

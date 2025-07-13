@@ -22,6 +22,8 @@ namespace _2cartochkiGame
         public static int Row { get; set; }
         public static int Col { get; set; }
         public static int[,] Mass { get; set; }
+        public static string File { get; set; } = "images";
+        public static int Format { get; set; } = 1;
         public Card(DataGridView datagrid)
         {
             DataGrid = datagrid;
@@ -29,17 +31,35 @@ namespace _2cartochkiGame
         public void ShowSelectedCard() // Показ карточки
         {
             int num = Mass[Row, Col];
-            if (num < 0)
+            if (Format == 1)
             {
-                string ph = $"images/photo_{Convert.ToString((num)).Substring(1)}.png";
-                Image image = Image.FromFile(ph);
-                DataGrid.Rows[Row].Cells[Col].Value = image;
+                if (num < 0)
+                {
+                    string ph = $"{File}/photo_{Convert.ToString((num)).Substring(1)}.png";
+                    Image image = Image.FromFile(ph);
+                    DataGrid.Rows[Row].Cells[Col].Value = image;
+                }
+                else
+                {
+                    string ph = $"{File}/photo{Convert.ToString((num))}.jpg";
+                    Image image = Image.FromFile(ph);
+                    DataGrid.Rows[Row].Cells[Col].Value = image;
+                }
             }
             else
             {
-                string ph = $"images/photo{Convert.ToString((num))}.jpg";
-                Image image = Image.FromFile(ph);
-                DataGrid.Rows[Row].Cells[Col].Value = image;
+                if (num < 0)
+                {
+                    string ph = $"{File}/photo_{Convert.ToString((num)).Substring(1)}.jpg";
+                    Image image = Image.FromFile(ph);
+                    DataGrid.Rows[Row].Cells[Col].Value = image;
+                }
+                else
+                {
+                    string ph = $"{File}/photo{Convert.ToString((num))}.png";
+                    Image image = Image.FromFile(ph);
+                    DataGrid.Rows[Row].Cells[Col].Value = image;
+                }
             }
         }
         public void ShowDefoltCards() //ВЫВОД НАЧАЛЬНОГО ЭКРАНА КАРТОЧЕК
@@ -52,7 +72,7 @@ namespace _2cartochkiGame
                 }
             }
         }
-        public void ShowSelectedDefoltCards(int Row1,int Col1,int Row2,int Col2) //ВЫВОД ДЕВОЛТНОЙ КАРТОЧКИ НА ДВЕ НЕПРАВИЛЬНО ВЫБРАННЫЕ
+        public void ShowSelectedDefoltCards(int Row1,int Col1,int Row2,int Col2) //ВЫВОД ДЕФОЛТНОЙ КАРТОЧКИ НА ДВЕ НЕПРАВИЛЬНО ВЫБРАННЫЕ
         {
             DataGrid.Rows[Row1].Cells[Col1].Value = DefoltImage;
             DataGrid.Rows[Row2].Cells[Col2].Value = DefoltImage;
