@@ -38,7 +38,7 @@ namespace _2cartochkiGame
                     {
                         g.Clear(Color.White);
                         string text = words[i-1];
-                        using (Font font = new Font("Arial", 24))
+                        using (Font font = new Font("Arial", 30))
                         using (Brush brush = new SolidBrush(Color.Black))
                         {
                             SizeF size = g.MeasureString(text, font);
